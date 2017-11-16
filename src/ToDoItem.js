@@ -6,7 +6,6 @@ class ToDoItem extends Component {
 
     this.state = {
       isDone: false,
-      text: text,
     };
 
     this.handleChange = this.handleChange.bind(this);
