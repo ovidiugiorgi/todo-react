@@ -10,6 +10,30 @@ class NewItem extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPress, false);
+  }
+
+  onSubmit() {
+    this.props.onAdd(this.state.value);
+    this.setState({value: ''});
+  }
+
+  handleKeyPress(event) {
+    // enter
+    if (event.keyCode === 13) {
+      event.preventDefault();
+
+      this.onSubmit();
+    }
   }
 
   handleChange(event) {
@@ -17,8 +41,7 @@ class NewItem extends Component {
   }
 
   handleClick(event) {
-    this.props.onAdd(this.state.value);
-    this.setState({value: ''});
+    this.onSubmit();
   }
 
   render() {
