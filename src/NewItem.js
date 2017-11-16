@@ -23,7 +23,9 @@ class NewItem extends Component {
   }
 
   onSubmit() {
-    this.props.onAdd(this.state.value);
+    if (this.state.value.length) {
+      this.props.onAdd(this.state.value);      
+    }
     this.setState({value: ''});
   }
 

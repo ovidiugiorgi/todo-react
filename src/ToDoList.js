@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import ToDoItem from './ToDoItem';
 
 class ToDoList extends Component {
-  constructor({ items }) {
+  constructor({ items, onDone }) {
     super();
+
+    this.onDone = this.onDone.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleClick(event) {
-    this.props.onAdd(this.state.value);
-    this.setState({value: ''});
+  onDone(index, isDone) {
+    this.props.onDone(index, isDone);
   }
 
   render() {
@@ -20,7 +17,15 @@ class ToDoList extends Component {
 
     return (
       <div className="toDoList">
-        {items.map((item, index) => <ToDoItem key={index} text={item} />)}
+        {items.map(
+          (item, index) => 
+            <ToDoItem
+              key={index}
+              text={item.text}
+              isDone={item.isDone}
+              onDone={isDone => this.onDone(index, isDone)}
+            />
+        )}
       </div>
     );
   }
