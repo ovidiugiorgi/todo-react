@@ -25,7 +25,7 @@ class ToDoItem extends Component {
         <input type="checkbox" value={this.state.isDone} onChange={this.handleChange}></input>
         <span className={isDoneClass}>{text}</span>
       </div>
-    )
+    );
   }
 }
 
