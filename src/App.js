@@ -48,6 +48,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>To Do</h1>
         <ToDoList items={this.state.items} onDone={this.handleDone}/>
         <NewItem onAdd={this.handleAdd} />
       </div>
