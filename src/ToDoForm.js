@@ -48,6 +48,7 @@ class ToDoForm extends Component {
     return (
       <div>
         <ToDoList items={this.state.items} onDone={this.handleDone}/>
+        {this.state.items.length > 0 && <hr />}      
         <NewItem onAdd={this.handleAdd} />
       </div>
     )
